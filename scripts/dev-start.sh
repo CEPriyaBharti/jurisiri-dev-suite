@@ -23,24 +23,24 @@ print_success() {
 # Start Docker services
 start_docker_services() {
     print_status "Starting Docker services..."
-    
+
     cd docker
-    
+
     # Start PostgreSQL
-    docker-compose up -d postgres
-    
+    docker compose up -d postgres
+
     # Wait for PostgreSQL to be ready
     print_status "Waiting for PostgreSQL to be ready..."
     sleep 5
-    
+
     # Check if services are running
-    if docker-compose ps postgres | grep -q "Up"; then
+    if docker compose ps postgres | grep -q "Up"; then
         print_success "PostgreSQL is running on port 5432"
     else
         echo "❌ Failed to start PostgreSQL"
         exit 1
     fi
-    
+
     cd ..
 }
 

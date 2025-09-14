@@ -26,14 +26,14 @@ print_warning() {
 # Stop Docker services
 stop_docker_services() {
     print_status "Stopping Docker services..."
-    
+
     cd docker
-    
+
     # Stop all services
-    docker-compose down
-    
+    docker compose down
+
     print_success "All Docker services stopped"
-    
+
     cd ..
 }
 
