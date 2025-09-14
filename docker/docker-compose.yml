@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     container_name: jurisiri_postgres
     environment:
       POSTGRES_DB: jurisiri_dev
@@ -22,7 +22,7 @@ services:
       retries: 3
 
   postgres_test:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     container_name: jurisiri_postgres_test
     environment:
       POSTGRES_DB: jurisiri_test
