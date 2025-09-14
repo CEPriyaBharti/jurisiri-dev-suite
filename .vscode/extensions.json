@@ -1,33 +1,15 @@
 {
   "recommendations": [
+    "charliermarsh.ruff",
     "ms-python.python",
-    "ms-python.black-formatter",
-    "ms-python.isort",
-    "ms-python.flake8",
     "ms-python.mypy-type-checker",
-    "ms-vscode.vscode-typescript-next",
-    "bradlc.vscode-tailwindcss",
     "esbenp.prettier-vscode",
-    "ms-vscode.vscode-json",
-    "redhat.vscode-yaml",
-    "ms-vscode.vscode-docker",
-    "ckolkman.vscode-postgres",
-    "eamodio.gitlens",
-    "github.copilot",
-    "github.copilot-chat",
-    "ms-vscode.test-adapter-converter",
-    "littlefoxteam.vscode-python-test-adapter",
-    "ms-vscode.makefile-tools",
-    "yzhang.markdown-all-in-one",
-    "davidanson.vscode-markdownlint",
-    "ms-vscode.live-server",
-    "formulahendry.auto-rename-tag",
-    "christian-kohler.path-intellisense",
-    "visualstudioexptteam.vscodeintellicode",
-    "ms-vscode.hexeditor"
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-typescript-next"
   ],
   "unwantedRecommendations": [
+    "ms-python.flake8",
     "ms-python.pylint",
-    "ms-python.autopep8"
+    "ms-python.black-formatter"
   ]
 }

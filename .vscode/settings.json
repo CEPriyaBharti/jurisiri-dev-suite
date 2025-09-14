@@ -1,23 +1,41 @@
 {
   "python.defaultInterpreterPath": "./api/venv/bin/python",
   "python.terminal.activateEnvironment": true,
-  "python.linting.enabled": true,
+  "python.linting.enabled": false,
   "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Enabled": false,
   "python.linting.mypyEnabled": true,
+  "python.linting.mypyArgs": [
+    "--exclude=.*models\\.py$",
+    "--exclude=models/.*",
+    "--exclude=.*/models/.*"
+  ],
   "python.linting.banditEnabled": true,
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["--line-length=88"],
-  "python.sortImports.args": ["--profile", "black"],
+  "python.analysis.exclude": [
+    "**/models.py",
+    "**/models/**",
+    "**/users/models.py"
+  ],
+  "python.analysis.ignore": [
+    "**/models.py",
+    "**/models/**",
+    "**/users/models.py"
+  ],
+  "mypy-type-checker.ignorePatterns": [
+    "**/models.py",
+    "**/models/**"
+  ],
+  "ruff.enable": true,
+  "ruff.lint.enable": true,
+  "ruff.format.enable": true,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
   },
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "editor.rulers": [88],
+  "editor.rulers": [79],
   "editor.tabSize": 4,
   "editor.insertSpaces": true,
   "files.exclude": {
@@ -50,9 +68,9 @@
     "typescriptreact": "html"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.fixAll.ruff": "explicit"
     }
   },
   "[typescript]": {

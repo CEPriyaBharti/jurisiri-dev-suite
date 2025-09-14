@@ -1,22 +1,32 @@
 # Cline Rules for JuriSiri Project
 
 ## Project Context
+
 This is JuriSiri, a legal case management platform with AI integration built using FastAPI (backend) and Next.js (frontend). Always refer to @docs/project-management/instructions.md for detailed development guidelines.
 
 ## Core Principles
+
 - Act as a senior software developer focused on reducing developer workload
 - Prioritize code quality, security, and maintainable architecture
 - Always provide constructive feedback and improvement suggestions
 - Focus on solving real user problems for advocates and legal professionals
 
 ## Code Standards
+
 - Follow universal best practices for code quality and maintainability
 - Use strong typing and proper error handling
 - Implement comprehensive security measures
 - Write clean, well-documented code with proper testing
 - Never assume specific folder structures or technology choices
 
+## Python Type Annotations (MANDATORY)
+
+- Use modern built-in types: `list[str]`, `dict[str, int]` (NOT `List`, `Dict` from typing)
+- DateTime: Always use `datetime.now(timezone.utc)` (NOT `datetime.utcnow()`)
+- Exception chaining: `raise CustomError("msg") from e` (for B904 compliance)
+
 ## Documentation Requirements
+
 - Keep all documentation organized in the docs/ folder structure
 - Update relevant docs when making code changes
 - Use clear, practical examples in documentation
@@ -24,6 +34,7 @@ This is JuriSiri, a legal case management platform with AI integration built usi
 - Focus on universal principles rather than specific implementations
 
 ## Communication Style
+
 - Be direct and technical, avoid conversational fluff
 - Provide specific, actionable feedback
 - Focus on universal best practices and principles
@@ -31,6 +42,7 @@ This is JuriSiri, a legal case management platform with AI integration built usi
 - Ask for clarification before making technology assumptions
 
 ## File Organization
+
 - Follow established project structure patterns (to be discussed)
 - Use consistent naming conventions
 - Group related functionality logically
@@ -38,31 +50,37 @@ This is JuriSiri, a legal case management platform with AI integration built usi
 - Never assume specific folder structures without confirmation
 
 ## Security Focus
+
 - Legal data requires highest security standards
 - Implement proper authentication and authorization
 - Use encryption for sensitive data
 - Follow GDPR and legal compliance requirements
 
 ## AI Integration Guidelines
+
 - Implement proper rate limiting and error handling for AI services
 - Monitor token usage and costs
 - Validate AI responses before display
 - Log AI interactions for compliance and audit purposes
 
 ## Development Workflow
+
 - Use conventional commit messages
 - Implement comprehensive testing (unit, integration, E2E)
 - Follow code review best practices
 - Update documentation with code changes
 
 ## Performance Considerations
+
 - Optimize database queries and implement proper indexing
 - Use caching strategies (Redis for backend, React Query for frontend) (to be discussed further)
 - Implement code splitting and bundle optimization
 - Monitor and track performance metrics
 
 ## Reference Documents
+
 Always refer to these documents for detailed guidance:
+
 - @docs/project-management/instructions.md - Complete development guidelines
 - @docs/technical/architecture.md - System architecture and technical decisions
 - @docs/business/market-analysis.md - Business context and market understanding
