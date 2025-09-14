@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: jurisiri_postgres
+    environment:
+      POSTGRES_DB: jurisiri_dev
+      POSTGRES_USER: jurisiri
+      POSTGRES_PASSWORD: jurisiri_dev_password
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - jurisiri_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jurisiri -d jurisiri_dev"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  postgres_test:
+    image: postgres:15-alpine
+    container_name: jurisiri_postgres_test
+    environment:
+      POSTGRES_DB: jurisiri_test
+      POSTGRES_USER: jurisiri
+      POSTGRES_PASSWORD: jurisiri_test_password
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
+    networks:
+      - jurisiri_network
+    restart: unless-stopped
+    profiles:
+      - testing
+
+  redis:
+    image: redis:7-alpine
+    container_name: jurisiri_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - jurisiri_network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    profiles:
+      - caching
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: jurisiri_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@jurisiri.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - jurisiri_network
+    restart: unless-stopped
+    profiles:
+      - admin
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+    driver: local
+  postgres_test_data:
+    driver: local
+  redis_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  jurisiri_network:
+    driver: bridge
