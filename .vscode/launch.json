@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Web",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run dev",
+            "cwd": "${workspaceFolder}/web",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "name": "API",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "./venv/bin/python -m uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload --log-level info",
+            "cwd": "${workspaceFolder}/api",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/api"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "API+Web",
+            "configurations": [
+                "API",
+                "Web"
+            ],
+            "stopAll": true,
+            "preLaunchTask": null
+        }
+    ]
+}

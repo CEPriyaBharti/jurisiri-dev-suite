@@ -4,3 +4,6 @@
 [submodule "web"]
 	path = web
 	url = https://github.com/CEPriyaBharti/jurisiri-v2-web.git
+[submodule "jurisiri-ai"]
+	path = jurisiri-ai
+	url = https://github.com/CEPriyaBharti/jurisiri-ai.git
